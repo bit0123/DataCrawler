@@ -10,6 +10,10 @@ me <- getUsers("811807988843131", token, private_info = TRUE)
 friends<- getFriends(token, simplify = FALSE)
 likes<- getLikes(user=friends$id[3], token=token)
 
+fb_page <- getPage(page="bdnews24", token=token)
+## Getting information and likes/comments about most recent post
+post <- getPost(post=fb_page$id[1], n=2000, token=token)
+
 mat<- getNetwork(token, format="adj.matrix")
 library(igraph)
 network <- graph.adjacency(mat, mode="undirected")
